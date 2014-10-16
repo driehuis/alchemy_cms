@@ -5,14 +5,14 @@ describe 'alchemy/essences/_essence_richtext_view' do
   let(:content) { Alchemy::Content.new(essence: essence) }
 
   it "renders the html body" do
-    render content, content: content
+    render essence, content: content
     expect(rendered).to have_content('Lorem ipsum dolor sit amet consectetur adipiscing elit.')
     expect(rendered).to have_selector('h1')
   end
 
   context 'with options[:plain_text] true' do
     it "renders the text body" do
-      render content, content: content, options: {plain_text: true}
+      render essence, content: content, options: {plain_text: true}
       expect(rendered).to have_content('Lorem ipsum dolor sit amet consectetur adipiscing elit.')
       expect(rendered).to_not have_selector('h1')
     end
@@ -24,7 +24,7 @@ describe 'alchemy/essences/_essence_richtext_view' do
     end
 
     it "renders the text body" do
-      render content.essence, content: content
+      render essence, content: content
       expect(rendered).to have_content('Lorem ipsum dolor sit amet consectetur adipiscing elit.')
       expect(rendered).to_not have_selector('h1')
     end
